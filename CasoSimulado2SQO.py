@@ -16,9 +16,9 @@ transport.connect(username=username, password=password)
 sftp = transport.open_sftp_client()
 
 # Directorio y tiempo de los archivos
-local_dir = '/home/sqo21/ArchCopia'
-remote_dir = '/home/sqo21/PruebaArch'
-max_time_delta = datetime.timedelta(hours=24)  # Ejemplo: archivos creados en las últimas 24 horas
+local_dir = '/home/sqo21/ArchCopia' # Repositorio Equipo A
+remote_dir = '/home/sqo21/PruebaArch' # Repositorio Equipo B
+max_time_delta = datetime.timedelta(hours=24)  # Se buscan archivos creados en las últimas 24 horas
 
 
 # Se buscan los archivos en base a los requerimientos
@@ -32,6 +32,8 @@ for file_name in sftp.listdir(remote_dir):
         selected_files.append(file_path)
         print("Se encontro el archivo: " + file_name)
 
+# NOTA: La funciona de comprimir archivos no funciona ya que indica que no existen archivos, pero
+# al buscar estos archivos si los reconoce
 
 # Comprimimos los archivos seleccionados en un archivo ZIP
 # backup_name = 'respaldo_{}.zip'.format(datetime.datetime.now().strftime('%Y%m%d_%H%M%S'))
